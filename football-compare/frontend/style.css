@@ -1,0 +1,204 @@
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --surface2: #21262d;
+  --border: #30363d;
+  --accent-a: #38bdf8;
+  --accent-b: #f97316;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --win: #3fb950;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
+.subtitle { color: var(--muted); margin-top: 0.4rem; font-size: 0.9rem; }
+
+main { max-width: 1280px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+
+/* ── Search panel ─────────────────────────────────────── */
+.search-panel {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.player-search h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+#search-a h2 { color: var(--accent-a); }
+#search-b h2 { color: var(--accent-b); }
+
+.search-controls { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+
+.league-select {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.search-input-wrap { position: relative; flex: 1; }
+
+input[type="text"] {
+  width: 100%;
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+input[type="text"]:focus { border-color: var(--accent-a); }
+#input-b:focus { border-color: var(--accent-b); }
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0; right: 0;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  list-style: none;
+  z-index: 100;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.suggestions li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+.suggestions li:last-child { border-bottom: none; }
+.suggestions li:hover { background: var(--surface); }
+.suggestions li img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: var(--border); }
+.suggestions .suggest-meta { color: var(--muted); font-size: 0.78rem; }
+
+.suggestions.hidden { display: none; }
+
+/* ── Player card ─────────────────────────────────────── */
+.player-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-card { color: var(--muted); font-size: 0.9rem; }
+
+.card-inner { display: flex; gap: 1.25rem; width: 100%; }
+.card-photo { flex-shrink: 0; }
+.card-photo img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); }
+.card-info { flex: 1; }
+.card-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.2rem; }
+.card-meta { color: var(--muted); font-size: 0.82rem; line-height: 1.6; }
+.card-meta span { display: inline-block; margin-right: 0.75rem; }
+
+.team-row { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+.team-row img { width: 20px; height: 20px; object-fit: contain; }
+.team-row span { font-size: 0.88rem; font-weight: 500; }
+
+.mini-stats { display: flex; gap: 1rem; margin-top: 0.75rem; flex-wrap: wrap; }
+.mini-stat { text-align: center; }
+.mini-stat .val { font-size: 1.3rem; font-weight: 700; }
+.mini-stat .lbl { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; }
+
+/* ── VS divider ─────────────────────────────────────── */
+.vs-divider {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--muted);
+  padding-top: 2.5rem;
+  user-select: none;
+}
+
+/* ── Comparison section ─────────────────────────────── */
+.comparison-section { margin-top: 3rem; }
+
+.charts-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.chart-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.chart-box h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 1rem; }
+
+/* ── Stat table ─────────────────────────────────────── */
+.stat-table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  overflow-x: auto;
+}
+
+.stat-table-wrap h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 1rem; }
+
+.stat-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.stat-table th { text-align: left; padding: 0.5rem 0.75rem; color: var(--muted); border-bottom: 1px solid var(--border); font-weight: 600; }
+.stat-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+.stat-table tr:last-child td { border-bottom: none; }
+.stat-table tr:hover td { background: var(--surface2); }
+.stat-table td:nth-child(2) { color: var(--accent-a); font-weight: 600; }
+.stat-table td:nth-child(3) { color: var(--accent-b); font-weight: 600; }
+.stat-table td.winner { position: relative; }
+.stat-table td.winner::after { content: '▲'; font-size: 0.65rem; margin-left: 4px; color: var(--win); vertical-align: middle; }
+
+.stat-group-header td { background: var(--surface2); color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+
+/* ── Loading spinner ─────────────────────────────────── */
+.spinner {
+  width: 20px; height: 20px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent-a);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin: auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 700px) {
+  .search-panel { grid-template-columns: 1fr; }
+  .vs-divider { text-align: center; padding: 0; }
+  .search-controls { flex-direction: column; }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Football Player Comparison</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>⚽ Player Comparison</h1>
+    <p class="subtitle">Premier League · Championship · Bundesliga · Ligue 1 · La Liga</p>
+  </header>
+
+  <main>
+    <section class="search-panel">
+      <div class="player-search" id="search-a">
+        <h2>Player A</h2>
+        <div class="search-controls">
+          <select id="league-a" class="league-select">
+            <option value="">All Leagues</option>
+          </select>
+          <div class="search-input-wrap">
+            <input type="text" id="input-a" placeholder="Search player name…" autocomplete="off" />
+            <ul class="suggestions" id="suggestions-a"></ul>
+          </div>
+        </div>
+        <div class="player-card" id="card-a">
+          <div class="empty-card">Select a player</div>
+        </div>
+      </div>
+
+      <div class="vs-divider">VS</div>
+
+      <div class="player-search" id="search-b">
+        <h2>Player B</h2>
+        <div class="search-controls">
+          <select id="league-b" class="league-select">
+            <option value="">All Leagues</option>
+          </select>
+          <div class="search-input-wrap">
+            <input type="text" id="input-b" placeholder="Search player name…" autocomplete="off" />
+            <ul class="suggestions" id="suggestions-b"></ul>
+          </div>
+        </div>
+        <div class="player-card" id="card-b">
+          <div class="empty-card">Select a player</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="comparison-section" id="comparison" hidden>
+      <div class="charts-row">
+        <div class="chart-box">
+          <h3>Overall Radar</h3>
+          <canvas id="radar-chart"></canvas>
+        </div>
+        <div class="chart-box">
+          <h3>Goal Contributions</h3>
+          <canvas id="goals-chart"></canvas>
+        </div>
+        <div class="chart-box">
+          <h3>Defensive Actions</h3>
+          <canvas id="defense-chart"></canvas>
+        </div>
+      </div>
+
+      <div class="stat-table-wrap">
+        <h3>Full Stats</h3>
+        <table class="stat-table" id="stat-table">
+          <thead>
+            <tr>
+              <th>Stat</th>
+              <th id="th-a">Player A</th>
+              <th id="th-b">Player B</th>
+            </tr>
+          </thead>
+          <tbody id="stat-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
